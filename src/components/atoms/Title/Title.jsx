@@ -2,14 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import proptypes from 'prop-types';
 
-const Title = ({ titleText, className, fontSize }) => {
-  return <TitleStyled className={className}>{titleText}</TitleStyled>;
+const Title = ({ titleText, className, fontSize, fontWeight }) => {
+  return (
+    <TitleStyled
+      fontWeight={fontWeight}
+      fontSize={fontSize}
+      className={className}
+    >
+      {titleText}
+    </TitleStyled>
+  );
 };
+
 const TitleStyled = styled.h2`
-  font-size: ${({fontSize}) => {
-    return fontSize
-  }};   
-  color: black;
+  font-size: ${({ fontSize }) => fontSize};
+  font-weight: ${({ fontWeight }) => fontWeight};
+  font-family: Arial, Helvetica, sans-serif;
 `;
 
 Title.propTypes = {
