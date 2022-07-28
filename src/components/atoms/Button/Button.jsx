@@ -12,9 +12,10 @@ const Button = ({ btnText, className, onClick }) => {
 const ButtonStyled = styled.button`
   width: 75px;
   height: 25px;
-  background-color: gray;
+  background-color: white;
   cursor: pointer;
-  border: none;
+  border: black 1px solid;
+  margin-left: 2px;
 `;
 
 Button.propTypes = {

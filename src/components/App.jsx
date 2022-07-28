@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FeedbackOptions from './molecules/FeedbackOptions/FeedbackOptions';
 import Statistics from './molecules/Statistics/Statistics';
+import Title from './atoms/Title/Title';
 
 export class App extends Component {
   state = {
@@ -24,11 +25,15 @@ export class App extends Component {
     });
   };
   onCountTotalFeedback = () => {
-    let total = this.state.good + 1
-    console.log(total);
+    return this.state.good + this.state.neutral + this.state.bad;
   };
+  onCountPositiveFeedbackPercentage = () => {
+    const total = this.state.good + this.state.neutral + this.state.bad;
+    const precentage = Math.round((this.state.good / total) * 100);
+    return `${precentage} %`;
+  };
+
   render() {
-    let total = 0
     return (
       <>
         <FeedbackOptions
@@ -36,12 +41,17 @@ export class App extends Component {
           onBadClick={this.onBadClickFun}
           onNeutralClick={this.onNeutralClickFun}
         ></FeedbackOptions>
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total="underfind"
-        ></Statistics>
+        {this.state.good + this.state.neutral + this.state.bad > 0 ? (
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.onCountTotalFeedback()}
+            positivePercentage={this.onCountPositiveFeedbackPercentage()}
+          ></Statistics>
+        ) : (
+          <Title titleText="There is no feedback"></Title>
+        )}
       </>
     );
   }
