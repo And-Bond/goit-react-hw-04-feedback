@@ -4,7 +4,7 @@ import Title from 'components/atoms/Title/Title';
 
 class Statistics extends Component {
   render() {
-    const {good, neutral, bad, total , positivePercentage} = this.props
+    const { good, neutral, bad, total, positivePercentage } = this.props;
     return (
       <>
         <Title fontWeight="600" fontSize="33px" titleText="Statistics"></Title>
@@ -37,5 +37,13 @@ class Statistics extends Component {
     );
   }
 }
+
+Statistics.propTypes = {
+  good: proptypes.number,
+  neutral: proptypes.number,
+  bad: proptypes.number,
+  total: proptypes.number,
+  positivePercentage: proptypes.number,
+};
 
 export default Statistics;

@@ -18,4 +18,10 @@ class FeedbackOptions extends Component {
   }
 }
 
+FeedbackOptions.propTypes = {
+  onGoodClick: proptypes.func,
+  onNeutralClick: proptypes.func,
+  onBadClick: proptypes.func
+}
+
 export default FeedbackOptions;
