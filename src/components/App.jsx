@@ -5,6 +5,7 @@ import Title from './atoms/Title/Title';
 
 export class App extends Component {
   state = {
+    // Додав кожній опції title, щоб знати, що за кнопку ми рендеримо
     options: [
       { good: 0, title: 'Good' },
       { neutral: 0, title: 'Neutral' },
@@ -14,9 +15,13 @@ export class App extends Component {
  
   onLeaveFeedback = name => {
     this.state.options.map(obj => {
+      // Перебираю масив об'єктів, щоб дізнитися що за кнопу я натиснув
       const keys = Object.keys(obj);
+      // Дістаю ключі
       if (keys[0] === name) {
-        // Я не розумію як змінити стейт відносно того, який ключ ми отримали(good,neutral чи bad)
+        // Перевіряю, чи це потрібний ключ, якщо так то виконуємо заміну стейта
+        // Я не розумію як змінити стейт відносно того, який ключ ми отримали(good,neutral чи bad),
+        //  а саме як нам пробратися у глибину, якщо стейт це options, тобто масив, та ще й об'єктів
         // this.setState(() => {
           // return {}
         // })
