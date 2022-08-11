@@ -5,12 +5,14 @@ import Title from './atoms/Title/Title';
 
 export class App extends Component {
   state = {
-    // Додав кожній опції title, щоб знати, що за кнопку ми рендеримо
+    // Додав кожній опції title, щоб знати, що за кнопку ми рендеримо(Чи це потрібно?)
     options: [
       { good: 0, title: 'Good' },
       { neutral: 0, title: 'Neutral' },
       { bad: 0, title: 'Bad' },
     ],
+    // Чи state правильно виглядає? 
+    // бо консоль каже що це тільки об'єкт
   };
  
   onLeaveFeedback = name => {
@@ -31,10 +33,10 @@ export class App extends Component {
     });
   };
   onCountTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    return this.state.options[0].good + this.state.options[1].neutral + this.state.options[2].bad;
   };
   onCountPositiveFeedbackPercentage = () => {
-    const total = this.state.good + this.state.neutral + this.state.bad;
+    const total = this.state.options[0].good + this.state.options[1].neutral + this.state.options[2].bad;
     const precentage = Math.round((this.state.good / total) * 100);
     return `${precentage} %`;
   };
@@ -46,11 +48,12 @@ export class App extends Component {
           onLeaveFeedback={this.onLeaveFeedback}
           options={this.state.options}
          />
-        {this.state.good + this.state.neutral + this.state.bad > 0 ? (
+        {this.state.options[0].good + this.state.options[1].neutral + this.state.options[2].bad > 0 ? (
           <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
+            good={this.state.options[0].good}
+            neutral={this.state.options[1].neutral}
+            bad={this.state.options[2].bad}
+          
             total={this.onCountTotalFeedback()}
             positivePercentage={this.onCountPositiveFeedbackPercentage()}
            />
