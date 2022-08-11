@@ -40,7 +40,7 @@ export class App extends Component {
         <FeedbackOptions
           onLeaveFeedback={this.onLeaveFeedback}
           options={this.state.options}
-        ></FeedbackOptions>
+         />
         {this.state.good + this.state.neutral + this.state.bad > 0 ? (
           <Statistics
             good={this.state.good}
@@ -48,9 +48,9 @@ export class App extends Component {
             bad={this.state.bad}
             total={this.onCountTotalFeedback()}
             positivePercentage={this.onCountPositiveFeedbackPercentage()}
-          ></Statistics>
+           />
         ) : (
-          <Title titleText="There is no feedback"></Title>
+          <Title titleText="There is no feedback" />
         )}
       </>
     );
