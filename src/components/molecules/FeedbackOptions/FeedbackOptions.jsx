@@ -6,13 +6,16 @@ import Title from 'components/atoms/Title/Title';
 class FeedbackOptions extends Component {
     
   render() {
-    const {onGoodClick, onNeutralClick, onBadClick} = this.props
+    const { onLeaveFeedback, options} = this.props
     return (
       <>
-        <Title fontSize="22px" titleText="Please leave feedback"></Title>
-        <Button onClick={onGoodClick} btnText="Good"></Button>
-        <Button onClick={onNeutralClick}btnText="Neutral"></Button>
-        <Button onClick={onBadClick} btnText="Bad"></Button>
+        <Title fontSize="22px" titleText="Please leave feedback" />
+        {options?.map((option) => {
+          return <Button onClick={() =>{
+            const keys = Object.keys(option)
+            const key = keys[0]
+            return onLeaveFeedback(key)}} btnText={option.title} />
+        })}
       </>
     );
   }

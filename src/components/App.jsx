@@ -5,23 +5,24 @@ import Title from './atoms/Title/Title';
 
 export class App extends Component {
   state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+    options: [
+      { good: 0, title: 'Good' },
+      { neutral: 0, title: 'Neutral' },
+      { bad: 0, title: 'Bad' },
+    ],
   };
-  onGoodClickFun = () => {
-    this.setState(prevState => {
-      return { good: prevState.good + 1 };
-    });
-  };
-  onBadClickFun = () => {
-    this.setState(prevState => {
-      return { bad: prevState.bad + 1 };
-    });
-  };
-  onNeutralClickFun = () => {
-    this.setState(prevState => {
-      return { neutral: prevState.neutral + 1 };
+ 
+  onLeaveFeedback = name => {
+    this.state.options.map(obj => {
+      const keys = Object.keys(obj);
+      if (keys[0] === name) {
+        // Я не розумію як змінити стейт відносно того, який ключ ми отримали(good,neutral чи bad)
+        // this.setState(() => {
+          // return {}
+        // })
+      } else {
+        return null;
+      }
     });
   };
   onCountTotalFeedback = () => {
@@ -37,9 +38,8 @@ export class App extends Component {
     return (
       <>
         <FeedbackOptions
-          onGoodClick={this.onGoodClickFun}
-          onBadClick={this.onBadClickFun}
-          onNeutralClick={this.onNeutralClickFun}
+          onLeaveFeedback={this.onLeaveFeedback}
+          options={this.state.options}
         ></FeedbackOptions>
         {this.state.good + this.state.neutral + this.state.bad > 0 ? (
           <Statistics
