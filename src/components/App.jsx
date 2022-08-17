@@ -1,4 +1,4 @@
-import React, { Component, useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import FeedbackOptions from './molecules/FeedbackOptions/FeedbackOptions';
 import Statistics from './molecules/Statistics/Statistics';
 import Title from './atoms/Title/Title';
